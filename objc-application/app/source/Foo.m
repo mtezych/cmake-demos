@@ -32,19 +32,42 @@
 @implementation Foo
 
 @synthesize x;
-@synthesize y;
+@synthesize y = _y;
 
-- (void) BarWithParamX : (float) paramX AndParamY : (NSString*) paramY;
+- (void) setY : (NSString*) paramY
 {
-    self.x  = paramX;
-    self.y  = paramY;
-    self->z = paramY.length;
+    self->_y = paramY;
+    self->_z = paramY.length;
+}
 
+- (id) initWithX : (float) paramX AndY : (NSString*) paramY
+{
+    //
+    // [Apple Developer] - NSObject init
+    // ~ https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc
+    //
+    self = [super init];
+
+    //
+    // [Apple Developer] - nil
+    // ~ https://developer.apple.com/documentation/objectivec/nil-2gl?language=objc
+    //
+    if (self != nil)
+    {
+        self.x = paramX;
+        self.y = paramY;
+    }
+
+    return self;
+}
+
+- (void) Print
+{
     //
     // [Apple Developer] - NSLog
     // ~ https://developer.apple.com/documentation/foundation/1395275-nslog
     //
-    NSLog(@"[Foo] Bar { x = %f, y = %@, z = %d } \n", self.x, self.y, self->z);
+    NSLog(@"[Foo] Bar { x = %f, y = %@, _z = %d } \n", self.x, self.y, self->_z);
 }
 
 @end

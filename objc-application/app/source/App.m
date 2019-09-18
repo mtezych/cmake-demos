@@ -33,24 +33,22 @@
 // [Apple Developer] - id
 // ~ https://developer.apple.com/documentation/objectivec/id?language=objc
 //
-void SendMessageBarWithParamXAndParamY (id object)
+void SendMessagePrint (id object)
 {
-    [object BarWithParamX : 8.0f AndParamY : @"#"];
+    // Checking for nil is not needed.
+    [object Print];
 }
 
 int main (int argc, const char* argv[])
 {
-    Foo* foo = [[Foo alloc] init];
+    Foo* foo = [[Foo alloc] initWithX : 0.4f AndY : @"& $ %"];
 
-    [foo BarWithParamX : 0.4f AndParamY : @"&"];
+    [foo Print];
 
-    SendMessageBarWithParamXAndParamY(foo);
+    foo.x = 8.0f;
+    foo.y = @"# # # #";
 
-    //
-    // [Apple Developer] - nil
-    // ~ https://developer.apple.com/documentation/objectivec/nil-2gl?language=objc
-    //
-    SendMessageBarWithParamXAndParamY(nil);
+    SendMessagePrint(foo);
 
     return 0;
 }

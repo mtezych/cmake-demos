@@ -39,12 +39,14 @@
 //
 @interface Foo : NSObject
 {
-    @private int z;
+    @private int _z;
 }
 
 @property (assign, nonatomic, readwrite) float     x;
 @property (  copy, nonatomic, readwrite) NSString* y;
 
-- (void) BarWithParamX : (float) paramX AndParamY : (NSString*) paramY;
+- (id) initWithX : (float) paramX AndY : (NSString*) paramY;
+
+- (void) Print;
 
 @end
