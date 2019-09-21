@@ -61,6 +61,8 @@ target_link_libraries      (tool PUBLIC  util
 target_sources             (tool PRIVATE tool/include/tool/Tool.hxx
                                                tool/source/Tool.cxx)
 
+set_target_properties      (tool PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 
 add_executable             (app)
 
